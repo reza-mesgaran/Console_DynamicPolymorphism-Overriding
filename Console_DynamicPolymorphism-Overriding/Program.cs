@@ -22,7 +22,7 @@ namespace Console_DynamicPolymorphism_Overriding  // Late binding
 
         }
     }
-   abstract class MyBaseClass
+    abstract class MyBaseClass
     {
         public virtual void MyMethod()      // Using -Virtual-Keyword for method of Base Class (A)
         {
@@ -33,9 +33,9 @@ namespace Console_DynamicPolymorphism_Overriding  // Late binding
         public abstract void MyMethod2();     // Using -Abstract- keyword ; means doesn't need to implement method in base class ! (B)
 
     }
-    class MyDerivedClass: MyBaseClass
+    class MyDerivedClass : MyBaseClass
     {
-       public override void MyMethod()    // Using -Override-Keyword for method of Derived Class (A)
+        public override void MyMethod()    // Using -Override-Keyword for method of Derived Class (A)
         {
             Console.WriteLine("I am CHILD method");
         }
@@ -45,4 +45,20 @@ namespace Console_DynamicPolymorphism_Overriding  // Late binding
             Console.WriteLine("I am Implemented abstract method of Base Class in Derived Class");
         }
     }
+
+    //----------------------------- SEALED CLASS ----------------------------------------
+
+    public class ParentClass    
+    {
+
+    }
+
+    public  sealed class MySealedClass : ParentClass //-Sealed class- means can't be a father (can't have a child); but can be a child :-)
+    {
+
+    }
+
+    /* public class testclass: MySealedClass    Impossible
+    {            }    */
+
 }
