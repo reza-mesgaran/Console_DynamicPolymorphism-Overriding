@@ -11,7 +11,7 @@ namespace Console_DynamicPolymorphism_Overriding  // Late binding
         static void Main(string[] args)
         {
             MyBaseClass c1 = new MyDerivedClass();
-            c1.MyMethod();                     // Without using polymorphism (Method Overriding) - MyMethod* from MyBaseClass will revoke!
+            c1.MyMethod();                     // With using polymorphism (Method Overriding) - MyMethod* from derived class will revoke! (Overriding)
 
             Console.ReadKey();
 
@@ -19,14 +19,14 @@ namespace Console_DynamicPolymorphism_Overriding  // Late binding
     }
    class MyBaseClass
     {
-        public void MyMethod()
+        public virtual void MyMethod()      // Using -Virtual-Keyword for method of Base Class
         {
             Console.WriteLine("I am BASE method");
         }
     }
     class MyDerivedClass: MyBaseClass
     {
-       public void MyMethod()
+       public override void MyMethod()    // Using -Override-Keyword for method of Derived Class
         {
             Console.WriteLine("I am CHILD method");
         }
