@@ -11,12 +11,17 @@ namespace Console_DynamicPolymorphism_Overriding  // Late binding
         static void Main(string[] args)
         {
             MyBaseClass c1 = new MyDerivedClass();
-            c1.MyMethod();                     // With using polymorphism (Method Overriding) - MyMethod* from derived class will revoke! (Overriding)
+            MyBaseClass c2 = new MyDerivedClass2();
+
+            c1.MyMethod();       // With using polymorphism (Method Overriding) - MyMethod* from derived class will revoke! (Overriding)
 
             Console.WriteLine("\n");
 
-            c1.MyMethod2();
+            c1.MyMethod2();     // abstract method of BaseClass should implement by any class which inherited from BaseClass
 
+            Console.WriteLine("\n");
+
+            c2.MyMethod();     // With using (new-Keyword) despite overriding a method ; MyMethod* from Base class will revoke! (Overriding-ignored)
 
             Console.ReadKey();
 
@@ -48,12 +53,12 @@ namespace Console_DynamicPolymorphism_Overriding  // Late binding
 
     //----------------------------- SEALED CLASS ----------------------------------------
 
-    public class ParentClass    
+    public class ParentClass
     {
 
     }
 
-    public  sealed class MySealedClass : ParentClass //-Sealed class- means can't be a father (can't have a child); but can be a child :-)
+    public sealed class MySealedClass : ParentClass //-Sealed class- means can't be a father (can't have a child); but can be a child :-)
     {
 
     }
@@ -61,4 +66,17 @@ namespace Console_DynamicPolymorphism_Overriding  // Late binding
     /* public class testclass: MySealedClass    Impossible
     {            }    */
 
+
+    //----------------------------- New-KeyWord ----------------------------------------
+    class MyDerivedClass2 : MyBaseClass
+    {
+        public new void MyMethod()
+        {
+            Console.WriteLine("I am 2th CHILD method");
+        }
+        public override void MyMethod2()
+        {
+            
+        }
+    }
 }
